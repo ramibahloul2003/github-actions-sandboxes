@@ -1,0 +1,25 @@
+﻿name: PR Quality Check (Fixed)
+
+on:
+  pull_request:                             #  CORRECTION 1 : pas d'accès aux secrets
+    types: [opened, synchronize]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    permissions:                            # CORRECTION 2 : permissions minimales
+      contents: read
+      pull-requests: read
+
+    steps:                                  # CORRECTION 3 : pas de ref fork  checkout du dépôt principal
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Run quality checks
+        run: go run ./.github/scripts/check-quality/      # CORRECTION 4 : GITHUB_TOKEN non exposé
+

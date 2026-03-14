@@ -1,0 +1,27 @@
+name: PR Quality Check
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Run quality checks
+        run: go run ./.github/scripts/check-quality/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

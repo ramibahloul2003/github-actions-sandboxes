@@ -1,0 +1,1 @@
+{"pull_request":{"head":{"sha":"abc123def456","ref":"attacker-branch","repo":{"full_name":"attacker/repo-fork"}},"base":{"repo":{"full_name":"owner/repo"}},"number":1},"repository":{"full_name":"owner/repo"}}
