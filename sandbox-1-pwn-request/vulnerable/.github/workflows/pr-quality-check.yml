@@ -22,6 +22,8 @@ jobs:
           go-version: '1.21'
 
       - name: Run quality checks
-        run: go run ./.github/scripts/check-quality/
+        run: go run sandbox-1-pwn-request/vulnerable/.github/scripts/check-quality/main.go
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
