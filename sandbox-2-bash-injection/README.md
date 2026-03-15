@@ -217,7 +217,7 @@ cp sandbox-2-bash-injection/attacker/version.sh \
 ### Step 3 ❌ — Run Vulnerable Version
 ```bash
 act issue_comment \
-    --eventpath event_issue_comment.json \
+    --eventpath events/event_issue_comment.json \
     --secret-file .secrets \
     -W sandbox-2-bash-injection/vulnerable/.github/workflows/update-versions.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -244,7 +244,7 @@ Data: repo=owner/repo&actor=nektos/act&token=EXFILTRATED_TOKEN
 ### Step 4 ✅ - Run Fixed Version
 ```bash
 act issue_comment \
-    --eventpath event_issue_comment.json \
+    --eventpath events/event_issue_comment.json \
     --secret-file .secrets \
     -W sandbox-2-bash-injection/fixed/.github/workflows/update-versions.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
