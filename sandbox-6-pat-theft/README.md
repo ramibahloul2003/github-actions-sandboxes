@@ -217,7 +217,7 @@ cp sandbox-6-pat-theft/attacker/api-diff.sh \
 ### Step 3 ❌ - Run Vulnerable Version
 ```bash
 act pull_request_target \
-    --eventpath event_pat_theft.json \
+    --eventpath events/event_pat_theft.json \
     --secret-file .secrets \
     -W sandbox-6-pat-theft/vulnerable/.github/workflows/api-diff-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -249,7 +249,7 @@ cp sandbox-6-pat-theft/fixed/scripts/api-diff.sh \
    sandbox-6-pat-theft/vulnerable/scripts/api-diff.sh
 
 act pull_request \
-    --eventpath event_pat_theft.json \
+    --eventpath events/event_pat_theft.json \
     --secret-file .secrets \
     -W sandbox-6-pat-theft/fixed/.github/workflows/api-diff-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
