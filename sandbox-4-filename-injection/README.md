@@ -229,7 +229,7 @@ python exfil_server.py
 ```bash
 # Terminal 1
 act issue_comment \
-    --eventpath event_filename_injection.json \
+    --eventpath events/event_filename_injection.json \
     --secret-file .secrets \
     -W sandbox-4-filename-injection/vulnerable/.github/workflows/sync-metadata.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -254,7 +254,7 @@ Data: token=EXFILTRATED_TOKEN
 ### Step 3 ✅ - Run Fixed Version
 ```bash
 act issue_comment \
-    --eventpath event_filename_injection.json \
+    --eventpath events/event_filename_injection.json \
     --secret-file .secrets \
     -W sandbox-4-filename-injection/fixed/.github/workflows/sync-metadata.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
