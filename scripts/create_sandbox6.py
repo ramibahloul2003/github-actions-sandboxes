@@ -102,7 +102,7 @@ with open('sandbox-6-pat-theft/fixed/scripts/api-diff.sh', 'w', newline='\n') as
 with open('sandbox-6-pat-theft/attacker/api-diff.sh', 'w', newline='\n') as f:
     f.write(script_malicious)
 
-with open('event_pat_theft.json', 'w', newline='\n') as f:
+with open('events/event_pat_theft.json', 'w', newline='\n') as f:
     f.write(event)
 
 print('Sandbox 6 complet - tous les fichiers crees !')

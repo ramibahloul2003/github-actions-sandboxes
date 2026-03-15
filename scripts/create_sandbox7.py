@@ -113,10 +113,10 @@ with open('sandbox-7-base64-branch/vulnerable/.github/workflows/pr-auto-commit.y
 with open('sandbox-7-base64-branch/fixed/.github/workflows/pr-auto-commit.yml', 'w', newline='\n') as f:
     f.write(workflow_fixed)
 
-with open('event_base64_branch.json', 'w', newline='\n') as f:
+with open('events/event_base64_branch.json', 'w', newline='\n') as f:
     f.write(event_vulnerable)
 
-with open('event_base64_branch_fixed.json', 'w', newline='\n') as f:
+with open('events/event_base64_branch_fixed.json', 'w', newline='\n') as f:
     f.write(event_fixed)
 
 with open('sandbox-7-base64-branch/attacker/PAYLOAD_EXPLANATION.md', 'w', newline='\n') as f:

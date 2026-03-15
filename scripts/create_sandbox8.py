@@ -139,7 +139,7 @@ with open('sandbox-8-tag-poisoning/attacker/fake-action/action.yml', 'w', newlin
 with open('sandbox-8-tag-poisoning/attacker/PAYLOAD_EXPLANATION.md', 'w', newline='\n') as f:
     f.write(payload_explanation)
 
-with open('event_tag_poisoning.json', 'w', newline='\n') as f:
+with open('events/event_tag_poisoning.json', 'w', newline='\n') as f:
     f.write(event)
 
 print('Sandbox 8 complet - tous les fichiers crees !')

