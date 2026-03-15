@@ -251,7 +251,7 @@ python exfil_server.py
 ```bash
 # ❌ Vulnerable version
 act pull_request_target \
-    --eventpath event.json \
+    --eventpath events/event.json \
     --secret-file .secrets \
     -W sandbox-1-pwn-request/vulnerable/.github/workflows/pr-quality-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -259,7 +259,7 @@ act pull_request_target \
 
 # ✅ Fixed version
 act pull_request \
-    --eventpath event.json \
+    --eventpath events/event.json \
     --secret-file .secrets \
     -W sandbox-1-pwn-request/fixed/.github/workflows/pr-quality-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -270,7 +270,7 @@ act pull_request \
 ```bash
 # ❌ Vulnerable version
 act issue_comment \
-    --eventpath event_issue_comment.json \
+    --eventpath events/event_issue_comment.json \
     --secret-file .secrets \
     -W sandbox-2-bash-injection/vulnerable/.github/workflows/update-versions.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -278,7 +278,7 @@ act issue_comment \
 
 # ✅ Fixed version
 act issue_comment \
-    --eventpath event_issue_comment.json \
+    --eventpath events/event_issue_comment.json \
     --secret-file .secrets \
     -W sandbox-2-bash-injection/fixed/.github/workflows/update-versions.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -289,7 +289,7 @@ act issue_comment \
 ```bash
 # ❌ Vulnerable version
 act issue_comment \
-    --eventpath event_branch_injection.json \
+    --eventpath events/event_branch_injection.json \
     --secret-file .secrets \
     -W sandbox-3-branch-injection/vulnerable/.github/workflows/format-request.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -297,7 +297,7 @@ act issue_comment \
 
 # ✅ Fixed version
 act issue_comment \
-    --eventpath event_branch_injection.json \
+    --eventpath events/event_branch_injection.json \
     --secret-file .secrets \
     -W sandbox-3-branch-injection/fixed/.github/workflows/format-request.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -308,7 +308,7 @@ act issue_comment \
 ```bash
 # ❌ Vulnerable version
 act issue_comment \
-    --eventpath event_filename_injection.json \
+    --eventpath events/event_filename_injection.json \
     --secret-file .secrets \
     -W sandbox-4-filename-injection/vulnerable/.github/workflows/sync-metadata.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -316,7 +316,7 @@ act issue_comment \
 
 # ✅ Fixed version
 act issue_comment \
-    --eventpath event_filename_injection.json \
+    --eventpath events/event_filename_injection.json \
     --secret-file .secrets \
     -W sandbox-4-filename-injection/fixed/.github/workflows/sync-metadata.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -327,7 +327,7 @@ act issue_comment \
 ```bash
 # ❌ Vulnerable version
 act pull_request_target \
-    --eventpath event_prompt_injection.json \
+    --eventpath events/event_prompt_injection.json \
     --secret-file .secrets \
     -W sandbox-5-prompt-injection/vulnerable/.github/workflows/auto-review.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -335,7 +335,7 @@ act pull_request_target \
 
 # ✅ Fixed version
 act pull_request \
-    --eventpath event_prompt_injection.json \
+    --eventpath events/event_prompt_injection.json \
     --secret-file .secrets \
     -W sandbox-5-prompt-injection/fixed/.github/workflows/auto-review.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -346,7 +346,7 @@ act pull_request \
 ```bash
 # ❌ Vulnerable version
 act pull_request_target \
-    --eventpath event_pat_theft.json \
+    --eventpath events/event_pat_theft.json \
     --secret-file .secrets \
     -W sandbox-6-pat-theft/vulnerable/.github/workflows/api-diff-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -354,7 +354,7 @@ act pull_request_target \
 
 # ✅ Fixed version
 act pull_request \
-    --eventpath event_pat_theft.json \
+    --eventpath events/event_pat_theft.json \
     --secret-file .secrets \
     -W sandbox-6-pat-theft/fixed/.github/workflows/api-diff-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -365,7 +365,7 @@ act pull_request \
 ```bash
 # ❌ Vulnerable version
 act pull_request_target \
-    --eventpath event_base64_branch.json \
+    --eventpath events/event_base64_branch.json \
     --secret-file .secrets \
     -W sandbox-7-base64-branch/vulnerable/.github/workflows/pr-auto-commit.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -373,7 +373,7 @@ act pull_request_target \
 
 # ✅ Fixed version
 act pull_request_target \
-    --eventpath event_base64_branch_fixed.json \
+    --eventpath events/event_base64_branch_fixed.json \
     --secret-file .secrets \
     -W sandbox-7-base64-branch/fixed/.github/workflows/pr-auto-commit.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -384,7 +384,7 @@ act pull_request_target \
 ```bash
 # ❌ Vulnerable version
 act push \
-    --eventpath event_tag_poisoning.json \
+    --eventpath events/event_tag_poisoning.json \
     --secret-file .secrets \
     -W sandbox-8-tag-poisoning/vulnerable/.github/workflows/scan.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -392,7 +392,7 @@ act push \
 
 # ✅ Fixed version
 act push \
-    --eventpath event_tag_poisoning.json \
+    --eventpath events/event_tag_poisoning.json \
     --secret-file .secrets \
     -W sandbox-8-tag-poisoning/fixed/.github/workflows/scan.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -422,16 +422,26 @@ github-actions-sandboxes/
 ├── README.md                           ← This file
 ├── .secrets                            ← Never committed (.gitignore)
 ├── .gitignore
-├── exfil_server.py                     ← Local exfiltration server
-├── event.json                          ← Sandbox 1 event
-├── event_issue_comment.json            ← Sandbox 2 event
-├── event_branch_injection.json         ← Sandbox 3 event
-├── event_filename_injection.json       ← Sandbox 4 event
-├── event_prompt_injection.json         ← Sandbox 5 event
-├── event_pat_theft.json                ← Sandbox 6 event
-├── event_base64_branch.json            ← Sandbox 7 vulnerable event
-├── event_base64_branch_fixed.json      ← Sandbox 7 fixed event
-├── event_tag_poisoning.json            ← Sandbox 8 event
+│
+├── events/                             ← Simulated GitHub event files
+│   ├── event.json                      ← Sandbox 1 event
+│   ├── event_issue_comment.json        ← Sandbox 2 event
+│   ├── event_branch_injection.json     ← Sandbox 3 event
+│   ├── event_filename_injection.json   ← Sandbox 4 event
+│   ├── event_prompt_injection.json     ← Sandbox 5 event
+│   ├── event_pat_theft.json            ← Sandbox 6 event
+│   ├── event_base64_branch.json        ← Sandbox 7 vulnerable event
+│   ├── event_base64_branch_fixed.json  ← Sandbox 7 fixed event
+│   └── event_tag_poisoning.json        ← Sandbox 8 event
+│
+├── scripts/                            ← Setup and utility scripts
+│   ├── exfil_server.py                 ← Local exfiltration server
+│   ├── create_sandbox4.py              ← Sandbox 4 setup script
+│   ├── create_sandbox5_v4.py           ← Sandbox 5 setup script
+│   ├── create_sandbox6.py              ← Sandbox 6 setup script
+│   ├── create_sandbox7.py              ← Sandbox 7 setup script
+│   └── create_sandbox8.py              ← Sandbox 8 setup script
+│
 ├── sandbox-1-pwn-request/
 │   ├── README.md
 │   ├── vulnerable/
