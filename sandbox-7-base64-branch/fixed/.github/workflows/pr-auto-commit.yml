@@ -1,0 +1,35 @@
+name: PR Auto Commit (Fixed)
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  auto-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run formatter
+        run: |
+          echo "Running formatter..."
+          echo "Formatting complete"
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Push formatting changes safely
+        if: steps.check-changes.outputs.has_changes == 'true'
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+        run: |
+          echo "Pushing changes safely..."
+          git push origin "HEAD:$HEAD_REF"
