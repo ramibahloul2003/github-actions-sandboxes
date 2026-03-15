@@ -1,0 +1,33 @@
+name: Sync Metadata (Fixed)
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  sync:
+    if: |
+      contains(github.event.comment.body, '/sync-metadata') &&
+      (github.event.comment.author_association == 'MEMBER' ||
+       github.event.comment.author_association == 'OWNER')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get changed files
+        id: get_files
+        run: |
+          echo "files=docs/readme.md" >> $GITHUB_OUTPUT
+
+      - name: Process metadata files
+        env:
+          FILES: ${{ steps.get_files.outputs.files }}
+        run: |
+          while IFS= read -r file; do
+            echo "Processing $file"
+          done <<< "$FILES"
