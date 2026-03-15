@@ -441,6 +441,9 @@ github-actions-sandboxes/
 ```
 
 ---
+## 📜 License
+
+MIT License. See [LICENSE](./LICENSE).
 
 ## ⚠️ Safety Notice
 
