@@ -226,7 +226,7 @@ python exfil_server.py
 ```bash
 # Terminal 1
 act issue_comment \
-    --eventpath event_branch_injection.json \
+    --eventpath events/event_branch_injection.json \
     --secret-file .secrets \
     -W sandbox-3-branch-injection/vulnerable/.github/workflows/format-request.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -251,7 +251,7 @@ Data: token=EXFILTRATED_TOKEN
 ### Step 3 ✅ - Run Fixed Version
 ```bash
 act issue_comment \
-    --eventpath event_branch_injection.json \
+    --eventpath events/event_branch_injection.json \
     --secret-file .secrets \
     -W sandbox-3-branch-injection/fixed/.github/workflows/format-request.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
