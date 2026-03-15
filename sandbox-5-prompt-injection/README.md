@@ -233,7 +233,7 @@ python exfil_server.py
 ```bash
 # Terminal 1
 act pull_request_target \
-    --eventpath event_prompt_injection.json \
+    --eventpath events/event_prompt_injection.json \
     --secret-file .secrets \
     -W sandbox-5-prompt-injection/vulnerable/.github/workflows/auto-review.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -265,7 +265,7 @@ Data: injection=success&repo=owner/repo&token=EXFILTRATED_TOKEN
 ### Step 3 ✅ - Run Fixed Version
 ```bash
 act pull_request \
-    --eventpath event_prompt_injection.json \
+    --eventpath events/event_prompt_injection.json \
     --secret-file .secrets \
     -W sandbox-5-prompt-injection/fixed/.github/workflows/auto-review.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
