@@ -198,7 +198,7 @@ cp sandbox-1-pwn-request/attacker/payload/main.go \
 ### Step 3 ❌ - Run Vulnerable Version
 ```bash
 act pull_request_target \
-    --eventpath event.json \
+    --eventpath events/event.json \
     --secret-file .secrets \
     -W sandbox-1-pwn-request/vulnerable/.github/workflows/pr-quality-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -225,7 +225,7 @@ Data: token=***&repo=owner/repo&actor=nektos/act
 ### Step 4 ✅ - Run Fixed Version
 ```bash
 act pull_request \
-    --eventpath event.json \
+    --eventpath events/event.json \
     --secret-file .secrets \
     -W sandbox-1-pwn-request/fixed/.github/workflows/pr-quality-check.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
