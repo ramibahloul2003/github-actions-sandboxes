@@ -422,6 +422,7 @@ github-actions-sandboxes/
 ├── README.md                           ← This file
 ├── .secrets                            ← Never committed (.gitignore)
 ├── .gitignore
+├── exfil_server.py                 ← Local exfiltration server
 │
 ├── events/                             ← Simulated GitHub event files
 │   ├── event.json                      ← Sandbox 1 event
@@ -435,7 +436,6 @@ github-actions-sandboxes/
 │   └── event_tag_poisoning.json        ← Sandbox 8 event
 │
 ├── scripts/                            ← Setup and utility scripts
-│   ├── exfil_server.py                 ← Local exfiltration server
 │   ├── create_sandbox4.py              ← Sandbox 4 setup script
 │   ├── create_sandbox5_v4.py           ← Sandbox 5 setup script
 │   ├── create_sandbox6.py              ← Sandbox 6 setup script
