@@ -1,0 +1,27 @@
+name: Format Request (Fixed)
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  save-format-request:
+    if: |
+      contains(github.event.comment.body, '/format') &&
+      (github.event.comment.author_association == 'MEMBER' ||
+       github.event.comment.author_association == 'OWNER')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save format request data
+        env:
+          BRANCH_NAME: ${{ github.event.comment.body }}
+        run: |
+          mkdir -p ./format-request
+          echo "$BRANCH_NAME" > ./format-request/pr_head_ref

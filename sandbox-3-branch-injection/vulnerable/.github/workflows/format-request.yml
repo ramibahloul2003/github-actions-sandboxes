@@ -1,0 +1,24 @@
+name: Format Request
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  save-format-request:
+    if: contains(github.event.comment.body, '/format')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save format request data
+        run: |
+          mkdir -p ./format-request
+          echo "${{ github.event.issue.number }}" > ./format-request/pr_head_ref
+          echo ${{ github.event.comment.body }} >> ./format-request/pr_head_ref
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEMO_TOKEN: EXFILTRATED_TOKEN_ghp_abc123def456
