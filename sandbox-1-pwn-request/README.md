@@ -4,7 +4,7 @@
 
 | Property | Value |
 |----------|-------|
-| **Attack Type** | Pwn Request — `pull_request_target` + untrusted fork checkout |
+| **Attack Type** | Pwn Request - `pull_request_target` + untrusted fork checkout |
 | **Real Target** | avelino/awesome-go (140k+ stars) |
 | **Attacker** | hackerbot-claw (Feb 28, 2026) |
 | **Result** | ❌ GITHUB_TOKEN with write permissions exfiltrated |
@@ -179,7 +179,7 @@ func main() {
 > The real attacker domain is replaced with `localhost:8888`.
 > No real secrets are sent anywhere outside your machine.
 
-### Step 1 — Start exfiltration server
+### Step 1 - Start exfiltration server
 ```bash
 # Terminal 2 — keep this running
 python exfil_server.py
@@ -188,7 +188,7 @@ python exfil_server.py
 # Exfiltration server running on port 8888...
 ```
 
-### Step 2 — Copy malicious payload
+### Step 2 - Copy malicious payload
 ```bash
 # Terminal 1
 cp sandbox-1-pwn-request/attacker/payload/main.go \
