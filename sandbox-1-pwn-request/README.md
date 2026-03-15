@@ -1,4 +1,4 @@
-# 🔐 Sandbox 1 — Pwn Request (avelino/awesome-go)
+# 🔐 Sandbox 1 - Pwn Request (avelino/awesome-go)
 
 ## 📋 Overview
 
@@ -195,7 +195,7 @@ cp sandbox-1-pwn-request/attacker/payload/main.go \
    sandbox-1-pwn-request/vulnerable/.github/scripts/check-quality/main.go
 ```
 
-### Step 3 ❌ — Run Vulnerable Version
+### Step 3 ❌ - Run Vulnerable Version
 ```bash
 act pull_request_target \
     --eventpath event.json \
@@ -222,7 +222,7 @@ Data: token=***&repo=owner/repo&actor=nektos/act
 ❌ Attack succeeded — token stolen silently
 ```
 
-### Step 4 ✅ — Run Fixed Version
+### Step 4 ✅ - Run Fixed Version
 ```bash
 act pull_request \
     --eventpath event.json \
