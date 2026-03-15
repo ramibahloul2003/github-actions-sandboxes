@@ -258,7 +258,7 @@ python exfil_server.py
 ```bash
 # Terminal 1
 act pull_request_target \
-    --eventpath event_base64_branch.json \
+    --eventpath events/event_base64_branch.json \
     --secret-file .secrets \
     -W sandbox-7-base64-branch/vulnerable/.github/workflows/pr-auto-commit.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -288,7 +288,7 @@ Data: pat=EXFILTRATED_TOKEN_ghp_abc123
 ### Step 3 ✅ - Run Fixed Version
 ```bash
 act pull_request_target \
-    --eventpath event_base64_branch_fixed.json \
+    --eventpath events/event_base64_branch_fixed.json \
     --secret-file .secrets \
     -W sandbox-7-base64-branch/fixed/.github/workflows/pr-auto-commit.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
