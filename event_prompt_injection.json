@@ -1,0 +1,1 @@
+{"action":"opened","pull_request":{"number":1,"head":{"sha":"abc123","ref":"attacker-branch","repo":{"full_name":"ramibahloul2003/github-actions-sandboxes"}},"base":{"repo":{"full_name":"ramibahloul2003/github-actions-sandboxes"}}},"repository":{"full_name":"ramibahloul2003/github-actions-sandboxes"}}
