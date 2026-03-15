@@ -241,7 +241,7 @@ python exfil_server.py
 ```bash
 # Terminal 1
 act push \
-    --eventpath event_tag_poisoning.json \
+    --eventpath events/event_tag_poisoning.json \
     --secret-file .secrets \
     -W sandbox-8-tag-poisoning/vulnerable/.github/workflows/scan.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
@@ -275,7 +275,7 @@ Data: host=docker-desktop&user=root&repo=owner/repo&token=EXFILTRATED_TOKEN
 ### Step 3 ✅ - Run Fixed Version
 ```bash
 act push \
-    --eventpath event_tag_poisoning.json \
+    --eventpath events/event_tag_poisoning.json \
     --secret-file .secrets \
     -W sandbox-8-tag-poisoning/fixed/.github/workflows/scan.yml \
     -P ubuntu-latest=catthehacker/ubuntu:act-latest \
