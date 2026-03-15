@@ -5,7 +5,6 @@
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/License-Educational-green?style=for-the-badge)
-![PFE](https://img.shields.io/badge/PFE-2026-orange?style=for-the-badge)
 
 Reproduction of real-world GitHub Actions attack vectors using [act](https://github.com/nektos/act) and Docker on a local machine.
 
