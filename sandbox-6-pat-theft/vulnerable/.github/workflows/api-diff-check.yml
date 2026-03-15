@@ -1,0 +1,29 @@
+name: API Diff Check
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  api-diff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
+
+      - name: Run API diff check
+        run: bash sandbox-6-pat-theft/vulnerable/scripts/api-diff.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_PAT: ${{ secrets.GITHUB_TOKEN }}
+          DEMO_TOKEN: EXFILTRATED_PAT_ghp_abc123def456
