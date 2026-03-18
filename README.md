@@ -4,6 +4,7 @@
 ![act](https://img.shields.io/badge/act-local%20runner-black?style=for-the-badge&logo=github-actions&logoColor=white)
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Nix](https://img.shields.io/badge/Nix-reproducible-blue?style=for-the-badge&logo=nixos)
 ![License](https://img.shields.io/badge/License-Educational-green?style=for-the-badge)
 
 Reproduction of real-world GitHub Actions attack vectors using [act](https://github.com/nektos/act) and Docker on a local machine.
@@ -226,6 +227,26 @@ go version
 
 ---
 
+## ❄️ Reproducible Environment (Nix) — Optional
+
+This repository includes a **Nix flake** that provides a fully reproducible development environment with all required tools pre-installed:
+
+- act
+- Docker CLI
+- Python 3
+- Go
+- Git
+
+### 🚀 Quick Start (Recommended)
+
+If you have Nix installed:
+
+```bash
+nix develop
+```
+
+---
+
 ## ⚙️ Setup
 ```bash
 # 1. Clone the repository
@@ -423,7 +444,8 @@ github-actions-sandboxes/
 ├── .secrets                            ← Never committed (.gitignore)
 ├── .gitignore
 ├── exfil_server.py                 ← Local exfiltration server
-│
+├── flake.lock                       ← Locked Nix dependencies
+├── flake.nix                       ← Nix development environment definition
 ├── events/                             ← Simulated GitHub event files
 │   ├── event.json                      ← Sandbox 1 event
 │   ├── event_issue_comment.json        ← Sandbox 2 event
